@@ -1,7 +1,6 @@
 import React from 'react';
-import Article from './article/Article';
-import Test1 from './Test1';
-import Test2 from './Test2';
+import Test1 from './component/Test1';
+import Test2 from './component/Test2';
 import './styles/App.css';
 
 function App() {

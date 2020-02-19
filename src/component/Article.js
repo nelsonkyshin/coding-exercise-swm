@@ -1,7 +1,7 @@
 import React from 'react';
 import Headline from './headline/Headline';
 import Content from './content/Content';
-import {test2} from '../communication/MockData';
+import {test2} from '../service/MockData';
 
 export default class Article extends React.Component {
   render() {

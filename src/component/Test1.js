@@ -1,6 +1,6 @@
 import React from 'react';
-import Text from './article/content/Text';
-import {test1} from './communication/MockData';
+import Text from './content/Text';
+import {test1} from '../service/MockData';
 
 export default class Test1 extends React.Component {
   render() {

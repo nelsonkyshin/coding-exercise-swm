@@ -1,5 +1,5 @@
 import React from 'react';
-import {getTextClasses} from '../../logic/ComposeText';
+import {getTextClasses} from '../../domain/ComposeText';
 
 export default class Text extends React.Component {
   render() {
