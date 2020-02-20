@@ -1,12 +1,16 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-export default class Quote extends React.Component {
-  render() {
-    return (
-      <div className='quote'>
-        <div className='text'>{this.props.text}</div>
-        <div className='attribution'>{this.props.attribution}</div>
-      </div>
-    );
-  }
+export default function Quote(props) {
+  return (
+    <div className='quote'>
+      <div className='text'>{props.text}</div>
+      <div className='attribution'>{props.attribution}</div>
+    </div>
+  );
+}
+
+Quote.propTypes = {
+  text: PropTypes.string,
+  attribution: PropTypes.string
 }

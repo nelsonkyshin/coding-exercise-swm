@@ -1,23 +1,38 @@
 .app {
-  width: 80%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   margin-right: auto;
   margin-left: auto;
 }
 
+.exercise {
+  padding: 0.5em;
+  margin: 0.5em;
+}
+
+.exercise:first-child {
+  margin-bottom: 0;
+}
+
 .article, .headline, .content {
   width: 100%;
 }
 
+.article-title {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
 .headline-meta {
   display: flex;
-  justify-content: space-between;
-  color: grey;
+  flex-direction: column;
+  color: slategrey;
+  font-size: 0.8em;
 }
 
 .headline {
-  margin-bottom: 2em;
+  margin-bottom: 1em;
 }
 
 .content .block {
@@ -30,4 +45,45 @@
 
 .important {
   font-weight: bold;
+}
+
+.image .caption {
+  font-size: 0.8em;
+  color: slategrey;
+}
+
+.image-container img {
+  max-width: 320px;
+  max-height: 240px;
+  width: auto;
+  height: auto;
+  opacity: 0;
+  transition: opacity 1s;
+}
+
+.image-container {
+  background-color: lightgrey;
+  transition: background-color 1s;
+  width: 320px;
+  height: 240px;
+  margin-bottom: 0.5em;
+}
+
+.image-container[loaded='true'] {
+  background-color: inherit;
+}
+
+.image-container[loaded='true'] img {
+  opacity: 1;
+}
+
+@media(min-width: 720px) {
+  .app {
+    width: 80%;
+  }
+
+  .headline-meta {
+    flex-direction: row;
+    justify-content: space-between;
+  }
 }

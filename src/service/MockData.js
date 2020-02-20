@@ -1,8 +1,8 @@
-export const test1 = {
+export const data1 = {
 kind: 'text', text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', intentions: [
 { kind: 'emphasized', index: 0, length: 11 }, { kind: 'important', index: 28, length: 27 }, ] };
 
-export const test2 = {
+export const data2 = {
 headline: "Annual Kings Park Festival",
 source: 'The West Australian', publicationDate: '2018-09-01T01:00:00.000Z', blocks: [ {
 kind: 'text', text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', intentions: [

@@ -1,15 +1,17 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Headline from './headline/Headline';
 import Content from './content/Content';
-import {test2} from '../service/MockData';
 
-export default class Article extends React.Component {
-  render() {
-    return (
-      <div className='article'>
-        <Headline title={test2.headline} source={test2.source} publicationDate={test2.publicationDate} />
-        <Content blocks={test2.blocks} />
-      </div>
-    );
-  }
+export default function Article(props) {
+  return (
+    <div className='article'>
+      <Headline title={props.article.headline} source={props.article.source} publicationDate={props.article.publicationDate} />
+      <Content blocks={props.article.blocks} />
+    </div>
+  );
+}
+
+Article.propTypes = {
+  article: PropTypes.object
 }

@@ -4,29 +4,29 @@ export function getTextClasses(strLength, intentions) {
   if (!areValidIntentions(strLength, intentions))
     return [{classes: 'normal', start: 0, end: strLength}];
 
-  return composeFormatting(strLength, intentionToFormatting(strLength, intentions));
+  return composeFormatting(strLength, intentionsToFormatting(strLength, intentions));
 }
 
 export function sortFormatting(formatting) {
   return formatting.sort((first, second) => first.index - second.index);
 }
 
-export function intentionToFormatting(strLength, intentions) {
+export function intentionsToFormatting(strLength, intentions) {
   var formatting = [{kind: 'normal', index: 0, start: true}, {kind: 'normal', index: strLength, start: false}];
   intentions.forEach((intention) => {
-    formatting.push({
-      kind: intention.kind,
-      index: intention.index,
-      start: true
-    });
-    formatting.push({
-      kind: intention.kind,
-      index: intention.index + intention.length,
-      start: false
-    });
+    formatting.push(getStartFormatting(intention));
+    formatting.push(getEndFormatting(intention));
   });
 
   return formatting;
+}
+
+export function getStartFormatting(intention) {
+  return {kind: intention.kind, index: intention.index, start: true};
+}
+
+export function getEndFormatting(intention) {
+  return {kind: intention.kind, index: intention.index + intention.length, start: false};
 }
 
 export function composeFormatting(strLength, formatting) {

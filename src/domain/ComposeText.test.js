@@ -19,7 +19,7 @@ test('invalidIntentions_getTextClasses_defaultTextClasses', () => {
   expect(ComposeText.getTextClasses(strLength, intentions)).toMatchObject(expected);
 });
 
-test('intentions_intentionToFormatting_formatting', () => {
+test('intentions_intentionsToFormatting_formatting', () => {
   const intentions = [{kind: 'blah', index: 5, length: 3}];
   const strLength = 10;
   const expected = [
@@ -28,7 +28,7 @@ test('intentions_intentionToFormatting_formatting', () => {
     {kind: 'blah', index: 5, start: true},
     {kind: 'blah', index: 8, start: false}
   ];
-  expect(ComposeText.intentionToFormatting(strLength, intentions)).toMatchObject(expected);
+  expect(ComposeText.intentionsToFormatting(strLength, intentions)).toMatchObject(expected);
 });
 
 test('classes_getTextClass_objectWithClasses', () => {
@@ -41,4 +41,28 @@ test('classes_getTextClass_objectWithClasses', () => {
   expect(result.classes).toContain(class2);
   expect(result.start).toBe(start);
   expect(result.end).toBe(end);
+});
+
+test('intentions_getTextClasses_correctTextClasses', () => {
+  const intentions = [{kind: 'emphasis', index: 3, length: 5}];
+  const strLength = 10;
+  const expected = [
+    {classes: 'normal', start: 0, end: 3},
+    {classes: 'normal emphasis', start: 3, end: 8},
+    {classes: 'normal', start: 8, end: 10}
+  ];
+  expect(ComposeText.getTextClasses(strLength, intentions)).toEqual(expected);
+});
+
+test('overlappingIntentions_getTextClasses_correctTextClasses', () => {
+  const intentions = [{kind: 'emphasis', index: 3, length: 5}, {kind: 'bold', index: 5, length: 5}];
+  const strLength = 15;
+  const expected = [
+    {classes: 'normal', start: 0, end: 3},
+    {classes: 'normal emphasis', start: 3, end: 5},
+    {classes: 'normal emphasis bold', start: 5, end: 8},
+    {classes: 'normal bold', start: 8, end: 10},
+    {classes: 'normal', start: 10, end: 15}
+  ];
+  expect(ComposeText.getTextClasses(strLength, intentions)).toEqual(expected);
 });

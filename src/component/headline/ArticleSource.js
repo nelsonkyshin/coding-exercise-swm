@@ -1,9 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-export default class ArticleSource extends React.Component {
-  render() {
-    return (
-      <span className='articleSource'>Source: {this.props.source}</span>
-    );
-  }
+export default function ArticleSource(props) {
+  return (
+    <span className='article-source'>Source: {props.source}</span>
+  );
+}
+
+ArticleSource.propTypes = {
+  source: PropTypes.string
 }

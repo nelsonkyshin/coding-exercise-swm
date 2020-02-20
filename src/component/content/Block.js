@@ -1,14 +1,16 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Image from './Image';
 import Quote from './Quote';
 import Text from './Text';
 
-export default class Block extends React.Component {
-  render() {
-    return (
-      <div className='block'>{getBlock(this.props.block)}</div>
-    );
-  }
+export default function Block(props) {
+  const block = getBlock(props.block);
+  return block ? <div className='block'>{block}</div> : null;
+}
+
+Block.propTypes = {
+  block: PropTypes.object
 }
 
 function getBlock(block) {
@@ -19,7 +21,7 @@ function getBlock(block) {
   else if (block.kind === 'image')
     return getImage(block);
 
-  return '';
+  return null;
 }
 
 function getImage(block) {
